@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.astmirzhan.finpilot.data.PortfolioRepository
 import com.astmirzhan.finpilot.domain.PortfolioAnalyzer
 import com.astmirzhan.finpilot.model.Asset
+import com.astmirzhan.finpilot.model.RiskProfile
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +28,21 @@ class MainActivity : AppCompatActivity() {
                     PortfolioRepository.addAsset(this, asset)
                     updateDashboard()
                 }
+            }
+        }
+
+    private val riskProfileLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val profileName = result.data
+                    ?.getStringExtra(RiskProfileActivity.EXTRA_SELECTED_PROFILE)
+
+                val selectedProfile = runCatching {
+                    RiskProfile.valueOf(profileName ?: RiskProfile.BALANCED.name)
+                }.getOrDefault(RiskProfile.BALANCED)
+
+                PortfolioRepository.saveRiskProfile(this, selectedProfile)
+                updateDashboard()
             }
         }
 
@@ -63,6 +79,16 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.viewPortfolioButton).setOnClickListener {
             val intent = Intent(this, PortfolioActivity::class.java)
             startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.riskProfileButton).setOnClickListener {
+            val currentProfile = PortfolioRepository.getRiskProfile(this)
+
+            val intent = Intent(this, RiskProfileActivity::class.java).apply {
+                putExtra(RiskProfileActivity.EXTRA_CURRENT_PROFILE, currentProfile.name)
+            }
+
+            riskProfileLauncher.launch(intent)
         }
     }
 
