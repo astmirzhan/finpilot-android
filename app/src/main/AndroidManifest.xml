@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinPilot">
         <activity
+            android:name=".PortfolioActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddAssetActivity"
             android:exported="false" />
         <activity

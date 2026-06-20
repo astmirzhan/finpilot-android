@@ -59,6 +59,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AddAssetActivity::class.java)
             addAssetLauncher.launch(intent)
         }
+
+        findViewById<Button>(R.id.viewPortfolioButton).setOnClickListener {
+            val intent = Intent(this, PortfolioActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun updateDashboard() {
