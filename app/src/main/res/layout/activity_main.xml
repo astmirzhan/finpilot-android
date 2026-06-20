@@ -49,6 +49,7 @@
             android:text="Risk score: 0.0/10"
             android:textSize="18sp" />
 
+
         <ProgressBar
             android:id="@+id/riskProgress"
             style="@android:style/Widget.ProgressBar.Horizontal"
@@ -72,6 +73,13 @@
             android:layout_height="wrap_content"
             android:max="100"
             android:progress="0" />
+
+        <Button
+            android:id="@+id/addAssetButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Add Asset" />
 
     </LinearLayout>
 </ScrollView>
