@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.astmirzhan.finpilot.data.PortfolioRepository
 import com.astmirzhan.finpilot.domain.PortfolioAnalyzer
+import com.astmirzhan.finpilot.view.PortfolioChartView
 import java.util.Locale
 
 class AnalysisActivity : AppCompatActivity() {
@@ -30,6 +31,9 @@ class AnalysisActivity : AppCompatActivity() {
         val riskScore = PortfolioAnalyzer.calculateRiskScore(assets)
         val diversificationScore = PortfolioAnalyzer.calculateDiversificationScore(assets)
         val recommendations = PortfolioAnalyzer.generateRecommendations(assets, profile)
+
+        val allocation = PortfolioAnalyzer.calculateAllocation(assets)
+        findViewById<PortfolioChartView>(R.id.portfolioChartView).setAllocation(allocation)
 
         findViewById<TextView>(R.id.analysisProfileText).text =
             "Profile: ${profile.displayName}"
