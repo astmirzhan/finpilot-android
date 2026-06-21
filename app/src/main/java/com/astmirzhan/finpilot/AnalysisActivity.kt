@@ -1,26 +1,114 @@
 package com.astmirzhan.finpilot
 
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.astmirzhan.finpilot.data.PortfolioRepository
 import com.astmirzhan.finpilot.domain.PortfolioAnalyzer
 import com.astmirzhan.finpilot.view.PortfolioChartView
 import java.util.Locale
+import kotlin.math.sqrt
 
-class AnalysisActivity : AppCompatActivity() {
+class AnalysisActivity : AppCompatActivity(), SensorEventListener {
+
+    private lateinit var sensorManager: SensorManager
+    private var accelerometer: Sensor? = null
+    private var lightSensor: Sensor? = null
+
+    private var lastShakeTime = 0L
+
+    private companion object {
+        const val SHAKE_THRESHOLD = 13.0f
+        const val SHAKE_COOLDOWN_MS = 2000L
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_analysis)
 
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
+
         updateAnalysis()
+
+        if (lightSensor == null) {
+            findViewById<TextView>(R.id.lightStatusText).text = "Light sensor unavailable"
+        }
+
+        findViewById<Button>(R.id.manualSensorDemoButton).setOnClickListener {
+            Toast.makeText(this, "Manual sensor demo triggered", Toast.LENGTH_SHORT).show()
+            findViewById<TextView>(R.id.sensorModeText).text = "Manual demo mode"
+            findViewById<TextView>(R.id.accelerometerStatusText).text = "Manual refresh used"
+            updateAnalysis()
+        }
 
         findViewById<Button>(R.id.backFromAnalysisButton).setOnClickListener {
             finish()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        accelerometer?.let {
+            sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_NORMAL)
+        }
+        lightSensor?.let {
+            sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_NORMAL)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        sensorManager.unregisterListener(this)
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        if (event == null) return
+
+        when (event.sensor.type) {
+            Sensor.TYPE_ACCELEROMETER -> handleAccelerometer(event)
+            Sensor.TYPE_LIGHT -> handleLight(event)
+        }
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+        // Not needed for this app.
+    }
+
+    private fun handleAccelerometer(event: SensorEvent) {
+        val x = event.values[0]
+        val y = event.values[1]
+        val z = event.values[2]
+
+        val gForce = sqrt(x * x + y * y + z * z) - SensorManager.GRAVITY_EARTH
+
+        if (gForce > SHAKE_THRESHOLD) {
+            val now = System.currentTimeMillis()
+            if (now - lastShakeTime < SHAKE_COOLDOWN_MS) return
+            lastShakeTime = now
+
+            updateAnalysis()
+            findViewById<TextView>(R.id.accelerometerStatusText).text =
+                "Accelerometer: shake detected"
+            Toast.makeText(this, "Quick analysis refreshed", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun handleLight(event: SensorEvent) {
+        val lux = event.values[0]
+
+        val mode = if (lux < 30f) "Night analysis mode" else "Day review mode"
+        findViewById<TextView>(R.id.sensorModeText).text = mode
+        findViewById<TextView>(R.id.lightStatusText).text =
+            String.format(Locale.US, "Light: %.1f lux", lux)
     }
 
     private fun updateAnalysis() {

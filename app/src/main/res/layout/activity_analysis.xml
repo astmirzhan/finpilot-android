@@ -77,6 +77,45 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:text="Sensor insights"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/sensorModeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Sensor mode: waiting..."
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/accelerometerStatusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Accelerometer: ready"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/lightStatusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Light: reading..."
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/manualSensorDemoButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Manual sensor demo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:text="Recommendations"
             android:textSize="22sp"
             android:textStyle="bold" />
