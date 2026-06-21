@@ -9,49 +9,80 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Investor Risk Profile"
-            android:textSize="28sp"
+            android:layout_marginTop="8dp"
+            android:letterSpacing="0.18"
+            android:text="INVESTOR PROFILE"
+            android:textColor="@color/fin_accent_blue"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="6dp"
+            android:text="Risk Profile"
+            android:textColor="@color/fin_text_primary"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Choose the profile that best describes your investment behavior."
-            android:textSize="16sp" />
+            android:textColor="@color/fin_text_secondary"
+            android:textSize="15sp" />
 
         <RadioGroup
             android:id="@+id/riskProfileRadioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="22dp"
             android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/conservativeRadioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Conservative — low risk, stable assets" />
+                android:background="@drawable/bg_card_glass"
+                android:buttonTint="@color/fin_accent_blue"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="18dp"
+                android:text="Conservative — low risk, stable assets"
+                android:textColor="@color/fin_text_primary"
+                android:textSize="16sp" />
 
             <RadioButton
                 android:id="@+id/balancedRadioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:background="@drawable/bg_card_glass"
+                android:buttonTint="@color/fin_accent_blue"
                 android:checked="true"
-                android:text="Balanced — moderate risk and diversification" />
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="18dp"
+                android:text="Balanced — moderate risk and diversification"
+                android:textColor="@color/fin_text_primary"
+                android:textSize="16sp" />
 
             <RadioButton
                 android:id="@+id/aggressiveRadioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Aggressive — high risk, growth-focused" />
+                android:background="@drawable/bg_card_glass"
+                android:buttonTint="@color/fin_accent_blue"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="18dp"
+                android:text="Aggressive — high risk, growth-focused"
+                android:textColor="@color/fin_text_primary"
+                android:textSize="16sp" />
 
         </RadioGroup>
 
@@ -59,19 +90,27 @@
             android:id="@+id/profileReminderSwitch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/bg_card_glass"
+            android:checked="true"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="16dp"
             android:text="Show profile in dashboard"
-            android:checked="true" />
+            android:textColor="@color/fin_text_primary"
+            android:textSize="16sp"
+            android:thumbTint="@color/fin_accent_green" />
 
         <Button
             android:id="@+id/saveRiskProfileButton"
+            style="@style/Widget.FinPilot.Button.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:text="Save Profile" />
 
         <Button
             android:id="@+id/cancelRiskProfileButton"
+            style="@style/Widget.FinPilot.Button.Secondary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"

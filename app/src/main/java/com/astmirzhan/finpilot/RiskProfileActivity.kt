@@ -33,7 +33,6 @@ class RiskProfileActivity : AppCompatActivity() {
         findViewById<Button>(R.id.saveRiskProfileButton).setOnClickListener {
             val selectedProfile = getSelectedProfile()
 
-            // Возвращаем выбранный профиль обратно в MainActivity
             val resultIntent = Intent().apply {
                 putExtra(EXTRA_SELECTED_PROFILE, selectedProfile.name)
             }

@@ -4,44 +4,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="20dp">
 
-    <TextView
-        android:id="@+id/portfolioTitleText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Portfolio"
-        android:textSize="28sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/portfolioSummaryText"
+    <!-- Summary card -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="0 assets • $0.00"
-        android:textSize="16sp" />
+        android:background="@drawable/bg_card_elevated"
+        android:orientation="vertical"
+        android:padding="22dp">
+
+        <TextView
+            android:id="@+id/portfolioTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Portfolio"
+            android:textColor="@color/fin_text_primary"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/portfolioSummaryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="0 assets • $0.00"
+            android:textColor="@color/fin_text_secondary"
+            android:textSize="15sp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/emptyPortfolioText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="No assets yet. Add your first asset from the dashboard."
-        android:textSize="16sp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_card_glass"
+        android:gravity="center"
+        android:padding="28dp"
+        android:text="No assets yet.\nAdd your first asset from the dashboard."
+        android:textColor="@color/fin_text_secondary"
+        android:textSize="15sp"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/assetsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        android:layout_weight="1" />
+        android:layout_marginTop="18dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
 
     <Button
         android:id="@+id/backButton"
+        style="@style/Widget.FinPilot.Button.Secondary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Back" />
 
 </LinearLayout>

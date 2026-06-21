@@ -9,79 +9,154 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
+
+        <!-- Hero -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:letterSpacing="0.18"
+            android:text="AI PORTFOLIO COPILOT"
+            android:textColor="@color/fin_accent_blue"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:text="FinPilot"
-            android:textSize="30sp"
+            android:textColor="@color/fin_text_primary"
+            android:textSize="34sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/activeProfileText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_chip"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
             android:text="Profile: Balanced"
-            android:textSize="16sp" />
+            android:textColor="@color/fin_text_primary"
+            android:textSize="14sp" />
 
+        <!-- Total value card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/bg_card_elevated"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.04"
+                android:text="Total portfolio value"
+                android:textColor="@color/fin_text_secondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/totalValueText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="$0.00"
+                android:textColor="@color/fin_text_primary"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Metric cards -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_card_glass"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:id="@+id/riskScoreText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Risk score: 0.0/10"
+                    android:textColor="@color/fin_text_secondary"
+                    android:textSize="14sp" />
+
+                <ProgressBar
+                    android:id="@+id/riskProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:layout_marginTop="14dp"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressBackgroundTint="@color/fin_border"
+                    android:progressTint="@color/fin_accent_amber" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="14dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_card_glass"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:id="@+id/diversificationScoreText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Diversification: 0.0/10"
+                    android:textColor="@color/fin_text_secondary"
+                    android:textSize="14sp" />
+
+                <ProgressBar
+                    android:id="@+id/diversificationProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:layout_marginTop="14dp"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressBackgroundTint="@color/fin_border"
+                    android:progressTint="@color/fin_accent_green" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Actions -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Total portfolio value"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/totalValueText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$0.00"
-            android:textSize="34sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/riskScoreText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Risk score: 0.0/10"
-            android:textSize="18sp" />
-
-        <ProgressBar
-            android:id="@+id/riskProgress"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:max="100"
-            android:progress="0" />
-
-        <TextView
-            android:id="@+id/diversificationScoreText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Diversification: 0.0/10"
-            android:textSize="18sp" />
-
-        <ProgressBar
-            android:id="@+id/diversificationProgress"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:max="100"
-            android:progress="0" />
+            android:layout_marginTop="26dp"
+            android:letterSpacing="0.04"
+            android:text="Quick actions"
+            android:textColor="@color/fin_text_secondary"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/addAssetButton"
+            style="@style/Widget.FinPilot.Button.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="14dp"
             android:text="Add Asset" />
 
         <Button
             android:id="@+id/viewPortfolioButton"
+            style="@style/Widget.FinPilot.Button.Secondary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -89,12 +164,15 @@
 
         <Button
             android:id="@+id/riskProfileButton"
+            style="@style/Widget.FinPilot.Button.Secondary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Risk Profile" />
+
         <Button
             android:id="@+id/analyzePortfolioButton"
+            style="@style/Widget.FinPilot.Button.Secondary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
