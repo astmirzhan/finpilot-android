@@ -90,6 +90,11 @@ class MainActivity : AppCompatActivity() {
 
             riskProfileLauncher.launch(intent)
         }
+
+        findViewById<Button>(R.id.analyzePortfolioButton).setOnClickListener {
+            val intent = Intent(this, AnalysisActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun updateDashboard() {

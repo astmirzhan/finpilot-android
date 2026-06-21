@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
+    android:id="@+id/analysisRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -12,45 +12,39 @@
         android:padding="24dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FinPilot"
-            android:textSize="30sp"
+            android:text="Portfolio Analysis"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/activeProfileText"
-            android:layout_width="wrap_content"
+            android:id="@+id/analysisProfileText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Profile: Balanced"
             android:textSize="16sp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/analysisTotalValueText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Total portfolio value"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/totalValueText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$0.00"
-            android:textSize="34sp"
+            android:layout_marginTop="28dp"
+            android:text="Total value: $0.00"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/riskScoreText"
+            android:id="@+id/analysisRiskScoreText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="20dp"
             android:text="Risk score: 0.0/10"
             android:textSize="18sp" />
 
         <ProgressBar
-            android:id="@+id/riskProgress"
+            android:id="@+id/analysisRiskProgress"
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,47 +52,43 @@
             android:progress="0" />
 
         <TextView
-            android:id="@+id/diversificationScoreText"
+            android:id="@+id/analysisDiversificationText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             android:text="Diversification: 0.0/10"
             android:textSize="18sp" />
 
         <ProgressBar
-            android:id="@+id/diversificationProgress"
+            android:id="@+id/analysisDiversificationProgress"
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="100"
             android:progress="0" />
 
-        <Button
-            android:id="@+id/addAssetButton"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="Add Asset" />
+            android:text="Recommendations"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/recommendationsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="No recommendations yet."
+            android:textSize="16sp" />
 
         <Button
-            android:id="@+id/viewPortfolioButton"
+            android:id="@+id/backFromAnalysisButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="View Portfolio" />
-
-        <Button
-            android:id="@+id/riskProfileButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Risk Profile" />
-        <Button
-            android:id="@+id/analyzePortfolioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Analyze Portfolio" />
+            android:layout_marginTop="32dp"
+            android:text="Back" />
 
     </LinearLayout>
 </ScrollView>
