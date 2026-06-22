@@ -3,20 +3,20 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- FinPilot design system -->
-    <color name="fin_bg_deep">#080D14</color>
-    <color name="fin_background">#0B1018</color>
-    <color name="fin_surface">#151F2C</color>
-    <color name="fin_elevated">#1A2533</color>
-    <color name="fin_border">#2A3545</color>
+    <!-- FinPilot light fintech design system -->
+    <color name="fin_bg">#F8FAF7</color>
+    <color name="fin_card">#FFFFFFFF</color>
+    <color name="fin_text_primary">#101828</color>
+    <color name="fin_text_secondary">#667085</color>
+    <color name="fin_border">#E5E7EB</color>
 
-    <color name="fin_text_primary">#F4F7FB</color>
-    <color name="fin_text_secondary">#9AA7B8</color>
+    <color name="fin_lime">#A3E635</color>
+    <color name="fin_lime_strong">#65A30D</color>
+    <color name="fin_lime_dark">#4D7C0F</color>
+    <color name="fin_lime_soft">#ECFCCB</color>
+    <color name="fin_on_lime">#1A2E05</color>
 
-    <color name="fin_accent_green">#34D399</color>
-    <color name="fin_accent_blue">#60A5FA</color>
-    <color name="fin_accent_amber">#F59E0B</color>
-    <color name="fin_accent_rose">#FB7185</color>
-
-    <color name="fin_on_accent">#06121F</color>
+    <color name="fin_blue">#2563EB</color>
+    <color name="fin_warning">#F59E0B</color>
+    <color name="fin_danger">#EF4444</color>
 </resources>

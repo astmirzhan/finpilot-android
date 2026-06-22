@@ -2,7 +2,6 @@ package com.astmirzhan.finpilot
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +11,7 @@ import com.astmirzhan.finpilot.data.PortfolioRepository
 import com.astmirzhan.finpilot.domain.PortfolioAnalyzer
 import com.astmirzhan.finpilot.model.Asset
 import com.astmirzhan.finpilot.ui.AssetAdapter
+import com.astmirzhan.finpilot.ui.BottomNavHelper
 import java.util.Locale
 
 class PortfolioActivity : AppCompatActivity() {
@@ -28,11 +28,11 @@ class PortfolioActivity : AppCompatActivity() {
         portfolioSummaryText = findViewById(R.id.portfolioSummaryText)
 
         setupRecyclerView()
-        setupButtons()
     }
 
     override fun onResume() {
         super.onResume()
+        BottomNavHelper.setup(this, BottomNavHelper.Tab.PORTFOLIO)
         updatePortfolio()
     }
 
@@ -44,12 +44,6 @@ class PortfolioActivity : AppCompatActivity() {
         findViewById<RecyclerView>(R.id.assetsRecyclerView).apply {
             layoutManager = LinearLayoutManager(this@PortfolioActivity)
             adapter = this@PortfolioActivity.adapter
-        }
-    }
-
-    private fun setupButtons() {
-        findViewById<Button>(R.id.backButton).setOnClickListener {
-            finish()
         }
     }
 

@@ -3,7 +3,7 @@ package com.astmirzhan.finpilot
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -11,10 +11,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.astmirzhan.finpilot.data.AuthRepository
 import com.astmirzhan.finpilot.data.PortfolioRepository
 import com.astmirzhan.finpilot.domain.PortfolioAnalyzer
+import com.astmirzhan.finpilot.domain.PortfolioInsightEngine
 import com.astmirzhan.finpilot.model.Asset
-import com.astmirzhan.finpilot.model.RiskProfile
+import com.astmirzhan.finpilot.ui.BottomNavHelper
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
@@ -28,21 +30,6 @@ class MainActivity : AppCompatActivity() {
                     PortfolioRepository.addAsset(this, asset)
                     updateDashboard()
                 }
-            }
-        }
-
-    private val riskProfileLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val profileName = result.data
-                    ?.getStringExtra(RiskProfileActivity.EXTRA_SELECTED_PROFILE)
-
-                val selectedProfile = runCatching {
-                    RiskProfile.valueOf(profileName ?: RiskProfile.BALANCED.name)
-                }.getOrDefault(RiskProfile.BALANCED)
-
-                PortfolioRepository.saveRiskProfile(this, selectedProfile)
-                updateDashboard()
             }
         }
 
@@ -67,33 +54,21 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        BottomNavHelper.setup(this, BottomNavHelper.Tab.HOME)
         updateDashboard()
     }
 
     private fun setupClickListeners() {
-        findViewById<Button>(R.id.addAssetButton).setOnClickListener {
-            val intent = Intent(this, AddAssetActivity::class.java)
-            addAssetLauncher.launch(intent)
+        findViewById<View>(R.id.addAssetButton).setOnClickListener {
+            addAssetLauncher.launch(Intent(this, AddAssetActivity::class.java))
         }
 
-        findViewById<Button>(R.id.viewPortfolioButton).setOnClickListener {
-            val intent = Intent(this, PortfolioActivity::class.java)
+        findViewById<View>(R.id.logoutButton).setOnClickListener {
+            AuthRepository.logout(this)
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
-        }
-
-        findViewById<Button>(R.id.riskProfileButton).setOnClickListener {
-            val currentProfile = PortfolioRepository.getRiskProfile(this)
-
-            val intent = Intent(this, RiskProfileActivity::class.java).apply {
-                putExtra(RiskProfileActivity.EXTRA_CURRENT_PROFILE, currentProfile.name)
-            }
-
-            riskProfileLauncher.launch(intent)
-        }
-
-        findViewById<Button>(R.id.analyzePortfolioButton).setOnClickListener {
-            val intent = Intent(this, AnalysisActivity::class.java)
-            startActivity(intent)
+            finish()
         }
     }
 
@@ -123,6 +98,10 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<ProgressBar>(R.id.diversificationProgress).progress =
             (diversificationScore * 10).toInt().coerceIn(0, 100)
+
+        val brief = PortfolioInsightEngine.generateBrief(assets, profile)
+        findViewById<TextView>(R.id.mainInsightText).text =
+            brief.firstOrNull()?.body ?: "Add assets to get your first AI brief."
     }
 
     @Suppress("DEPRECATION")

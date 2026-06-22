@@ -1,120 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/riskProfileRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:letterSpacing="0.18"
-            android:text="INVESTOR PROFILE"
-            android:textColor="@color/fin_accent_blue"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="Risk Profile"
-            android:textColor="@color/fin_text_primary"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:padding="20dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Choose the profile that best describes your investment behavior."
-            android:textColor="@color/fin_text_secondary"
-            android:textSize="15sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:letterSpacing="0.16"
+                android:text="INVESTOR PROFILE"
+                android:textColor="@color/fin_lime_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
-        <RadioGroup
-            android:id="@+id/riskProfileRadioGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:orientation="vertical">
-
-            <RadioButton
-                android:id="@+id/conservativeRadioButton"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_card_glass"
-                android:buttonTint="@color/fin_accent_blue"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="18dp"
-                android:text="Conservative — low risk, stable assets"
+                android:layout_marginTop="4dp"
+                android:text="Risk Profile"
                 android:textColor="@color/fin_text_primary"
-                android:textSize="16sp" />
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
-            <RadioButton
-                android:id="@+id/balancedRadioButton"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/bg_card_glass"
-                android:buttonTint="@color/fin_accent_blue"
+                android:layout_marginTop="10dp"
+                android:text="Pick the profile that best describes your investment behavior. It shapes your AI brief and target allocation."
+                android:textColor="@color/fin_text_secondary"
+                android:textSize="15sp" />
+
+            <RadioGroup
+                android:id="@+id/riskProfileRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/conservativeRadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_profile_option"
+                    android:buttonTint="@color/fin_lime_strong"
+                    android:paddingStart="12dp"
+                    android:paddingTop="18dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="18dp"
+                    android:text="Conservative — low risk, capital protection with stable assets"
+                    android:textColor="@color/fin_text_primary"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/balancedRadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_profile_option"
+                    android:buttonTint="@color/fin_lime_strong"
+                    android:checked="true"
+                    android:paddingStart="12dp"
+                    android:paddingTop="18dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="18dp"
+                    android:text="Balanced — moderate risk with steady diversification"
+                    android:textColor="@color/fin_text_primary"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/aggressiveRadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_profile_option"
+                    android:buttonTint="@color/fin_lime_strong"
+                    android:paddingStart="12dp"
+                    android:paddingTop="18dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="18dp"
+                    android:text="Aggressive — high risk, growth-focused with more volatility"
+                    android:textColor="@color/fin_text_primary"
+                    android:textSize="16sp" />
+
+            </RadioGroup>
+
+            <Switch
+                android:id="@+id/profileReminderSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_card"
                 android:checked="true"
                 android:paddingHorizontal="16dp"
-                android:paddingVertical="18dp"
-                android:text="Balanced — moderate risk and diversification"
+                android:paddingVertical="16dp"
+                android:text="Show profile in dashboard"
                 android:textColor="@color/fin_text_primary"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:thumbTint="@color/fin_lime_strong" />
 
-            <RadioButton
-                android:id="@+id/aggressiveRadioButton"
+            <Button
+                android:id="@+id/saveRiskProfileButton"
+                style="@style/Widget.FinPilot.Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:text="Save Profile" />
+
+            <Button
+                android:id="@+id/cancelRiskProfileButton"
+                style="@style/Widget.FinPilot.Button.Secondary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bg_card_glass"
-                android:buttonTint="@color/fin_accent_blue"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="18dp"
-                android:text="Aggressive — high risk, growth-focused"
-                android:textColor="@color/fin_text_primary"
-                android:textSize="16sp" />
+                android:layout_marginBottom="8dp"
+                android:text="Cancel" />
 
-        </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
 
-        <Switch
-            android:id="@+id/profileReminderSwitch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:background="@drawable/bg_card_glass"
-            android:checked="true"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="16dp"
-            android:text="Show profile in dashboard"
-            android:textColor="@color/fin_text_primary"
-            android:textSize="16sp"
-            android:thumbTint="@color/fin_accent_green" />
+    <include layout="@layout/view_bottom_nav" />
 
-        <Button
-            android:id="@+id/saveRiskProfileButton"
-            style="@style/Widget.FinPilot.Button.Primary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Save Profile" />
-
-        <Button
-            android:id="@+id/cancelRiskProfileButton"
-            style="@style/Widget.FinPilot.Button.Secondary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Cancel" />
-
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

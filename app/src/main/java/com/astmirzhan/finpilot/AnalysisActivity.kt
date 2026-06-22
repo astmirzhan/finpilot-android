@@ -5,13 +5,18 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.astmirzhan.finpilot.data.PortfolioRepository
 import com.astmirzhan.finpilot.domain.PortfolioAnalyzer
+import com.astmirzhan.finpilot.domain.PortfolioInsightEngine
+import com.astmirzhan.finpilot.ui.BottomNavHelper
 import com.astmirzhan.finpilot.view.PortfolioChartView
 import java.util.Locale
 import kotlin.math.sqrt
@@ -49,14 +54,12 @@ class AnalysisActivity : AppCompatActivity(), SensorEventListener {
             findViewById<TextView>(R.id.accelerometerStatusText).text = "Manual refresh used"
             updateAnalysis()
         }
-
-        findViewById<Button>(R.id.backFromAnalysisButton).setOnClickListener {
-            finish()
-        }
     }
 
     override fun onResume() {
         super.onResume()
+        BottomNavHelper.setup(this, BottomNavHelper.Tab.ANALYSIS)
+        updateAnalysis()
         accelerometer?.let {
             sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_NORMAL)
         }
@@ -145,5 +148,44 @@ class AnalysisActivity : AppCompatActivity(), SensorEventListener {
             recommendations.joinToString(separator = "\n\n") { recommendation ->
                 "• $recommendation"
             }
+
+        renderBrief(PortfolioInsightEngine.generateBrief(assets, profile))
     }
+
+    private fun renderBrief(sections: List<PortfolioInsightEngine.InsightSection>) {
+        val container = findViewById<LinearLayout>(R.id.aiBriefContainer)
+        container.removeAllViews()
+
+        sections.forEachIndexed { index, section ->
+            val title = TextView(this).apply {
+                text = section.title
+                setTextColor(ContextCompat.getColor(this@AnalysisActivity, R.color.fin_text_primary))
+                textSize = 15f
+                setTypeface(typeface, android.graphics.Typeface.BOLD)
+                val topMargin = if (index == 0) dp(10) else dp(18)
+                layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                ).apply { setMargins(0, topMargin, 0, 0) }
+            }
+
+            val body = TextView(this).apply {
+                text = section.body
+                setTextColor(ContextCompat.getColor(this@AnalysisActivity, R.color.fin_text_secondary))
+                textSize = 14f
+                gravity = Gravity.START
+                setLineSpacing(dp(3).toFloat(), 1f)
+                layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                ).apply { setMargins(0, dp(6), 0, 0) }
+            }
+
+            container.addView(title)
+            container.addView(body)
+        }
+    }
+
+    private fun dp(value: Int): Int =
+        (value * resources.displayMetrics.density).toInt()
 }

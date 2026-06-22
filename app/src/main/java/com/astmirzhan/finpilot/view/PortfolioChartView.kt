@@ -18,36 +18,36 @@ class PortfolioChartView @JvmOverloads constructor(
     private var allocation: Map<AssetCategory, Double> = emptyMap()
 
     private val barColors = intArrayOf(
-        Color.parseColor("#34D399"),
-        Color.parseColor("#60A5FA"),
+        Color.parseColor("#65A30D"),
+        Color.parseColor("#2563EB"),
         Color.parseColor("#F59E0B"),
-        Color.parseColor("#A78BFA"),
-        Color.parseColor("#FB7185"),
-        Color.parseColor("#2DD4BF"),
-        Color.parseColor("#F472B6"),
-        Color.parseColor("#38BDF8"),
-        Color.parseColor("#FBBF24")
+        Color.parseColor("#8B5CF6"),
+        Color.parseColor("#EF4444"),
+        Color.parseColor("#14B8A6"),
+        Color.parseColor("#EC4899"),
+        Color.parseColor("#0EA5E9"),
+        Color.parseColor("#84CC16")
     )
 
     private val barPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     private val trackPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.parseColor("#2A3545")
+        color = Color.parseColor("#EEF1F4")
     }
 
     private val labelPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.parseColor("#F4F7FB")
+        color = Color.parseColor("#101828")
         textSize = 36f
     }
 
     private val percentPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.parseColor("#9AA7B8")
+        color = Color.parseColor("#667085")
         textSize = 36f
         textAlign = Paint.Align.RIGHT
     }
 
     private val emptyPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.parseColor("#9AA7B8")
+        color = Color.parseColor("#667085")
         textSize = 40f
         textAlign = Paint.Align.CENTER
     }

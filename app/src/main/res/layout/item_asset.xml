@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
-    android:background="@drawable/bg_card_glass"
+    android:background="@drawable/bg_card"
     android:orientation="vertical"
     android:padding="18dp">
 
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="$0.00"
-            android:textColor="@color/fin_accent_green"
+            android:textColor="@color/fin_text_primary"
             android:textSize="18sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -45,12 +45,13 @@
             android:id="@+id/assetCategoryText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_chip_category"
+            android:background="@drawable/bg_chip_lime"
             android:paddingHorizontal="12dp"
             android:paddingVertical="5dp"
             android:text="Category"
-            android:textColor="@color/fin_accent_green"
-            android:textSize="13sp" />
+            android:textColor="@color/fin_lime_dark"
+            android:textSize="13sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/assetRiskText"

@@ -1,15 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Dark styling lives in the base theme so the app keeps a consistent
-         Dia-inspired dark finance look in both light and dark system modes. -->
-    <style name="Base.Theme.FinPilot" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:windowBackground">@drawable/bg_app_gradient</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@color/fin_bg_deep</item>
+    <!-- FinPilot keeps a consistent light fintech look in any system mode. -->
+    <style name="Base.Theme.FinPilot" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg_app</item>
+        <item name="android:statusBarColor">@color/fin_bg</item>
+        <item name="android:navigationBarColor">@color/fin_card</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
 
-        <item name="colorPrimary">@color/fin_accent_blue</item>
-        <item name="colorOnPrimary">@color/fin_on_accent</item>
-        <item name="colorSecondary">@color/fin_accent_green</item>
-        <item name="colorAccent">@color/fin_accent_blue</item>
+        <item name="colorPrimary">@color/fin_lime_strong</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/fin_lime_dark</item>
+        <item name="colorAccent">@color/fin_lime_strong</item>
 
         <item name="android:textColorPrimary">@color/fin_text_primary</item>
         <item name="android:textColorSecondary">@color/fin_text_secondary</item>

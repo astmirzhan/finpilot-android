@@ -3,6 +3,7 @@
     android:id="@+id/addAssetRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:fillViewport="true">
 
     <LinearLayout
@@ -15,16 +16,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:letterSpacing="0.18"
+            android:letterSpacing="0.16"
             android:text="NEW POSITION"
-            android:textColor="@color/fin_accent_blue"
+            android:textColor="@color/fin_lime_dark"
             android:textSize="12sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="4dp"
             android:text="Add Asset"
             android:textColor="@color/fin_text_primary"
             android:textSize="30sp"
@@ -35,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@drawable/bg_card_glass"
+            android:background="@drawable/bg_card"
             android:orientation="vertical"
             android:padding="20dp">
 
@@ -75,7 +76,7 @@
                 android:background="@drawable/bg_input"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="12dp"
-                android:popupBackground="@color/fin_elevated" />
+                android:popupBackground="@color/fin_card" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -104,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:background="@drawable/bg_card_glass"
+            android:background="@drawable/bg_card"
             android:orientation="vertical"
             android:padding="20dp">
 
@@ -124,15 +125,15 @@
                 android:layout_marginTop="10dp"
                 android:max="9"
                 android:progress="4"
-                android:progressTint="@color/fin_accent_amber"
-                android:thumbTint="@color/fin_accent_amber" />
+                android:progressTint="@color/fin_lime_strong"
+                android:thumbTint="@color/fin_lime_strong" />
 
             <CheckBox
                 android:id="@+id/longTermCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:buttonTint="@color/fin_accent_green"
+                android:buttonTint="@color/fin_lime_strong"
                 android:text="Long-term asset"
                 android:textColor="@color/fin_text_primary" />
         </LinearLayout>

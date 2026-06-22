@@ -5,8 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.astmirzhan.finpilot.data.PortfolioRepository
 import com.astmirzhan.finpilot.model.RiskProfile
+import com.astmirzhan.finpilot.ui.BottomNavHelper
 
 class RiskProfileActivity : AppCompatActivity() {
 
@@ -25,19 +28,23 @@ class RiskProfileActivity : AppCompatActivity() {
 
         val currentProfileName = intent.getStringExtra(EXTRA_CURRENT_PROFILE)
         val currentProfile = runCatching {
-            RiskProfile.valueOf(currentProfileName ?: RiskProfile.BALANCED.name)
-        }.getOrDefault(RiskProfile.BALANCED)
+            RiskProfile.valueOf(currentProfileName ?: PortfolioRepository.getRiskProfile(this).name)
+        }.getOrDefault(PortfolioRepository.getRiskProfile(this))
 
         selectCurrentProfile(currentProfile)
 
         findViewById<Button>(R.id.saveRiskProfileButton).setOnClickListener {
             val selectedProfile = getSelectedProfile()
 
+            PortfolioRepository.saveRiskProfile(this, selectedProfile)
+
             val resultIntent = Intent().apply {
                 putExtra(EXTRA_SELECTED_PROFILE, selectedProfile.name)
             }
-
             setResult(Activity.RESULT_OK, resultIntent)
+
+            Toast.makeText(this, "Profile saved: ${selectedProfile.displayName}", Toast.LENGTH_SHORT)
+                .show()
             finish()
         }
 
@@ -45,6 +52,11 @@ class RiskProfileActivity : AppCompatActivity() {
             setResult(Activity.RESULT_CANCELED)
             finish()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        BottomNavHelper.setup(this, BottomNavHelper.Tab.RISK)
     }
 
     private fun selectCurrentProfile(profile: RiskProfile) {

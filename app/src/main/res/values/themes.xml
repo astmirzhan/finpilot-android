@@ -1,14 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Base.Theme.FinPilot" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:windowBackground">@drawable/bg_app_gradient</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@color/fin_bg_deep</item>
+    <style name="Base.Theme.FinPilot" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg_app</item>
+        <item name="android:statusBarColor">@color/fin_bg</item>
+        <item name="android:navigationBarColor">@color/fin_card</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
 
-        <item name="colorPrimary">@color/fin_accent_blue</item>
-        <item name="colorOnPrimary">@color/fin_on_accent</item>
-        <item name="colorSecondary">@color/fin_accent_green</item>
-        <item name="colorAccent">@color/fin_accent_blue</item>
+        <item name="colorPrimary">@color/fin_lime_strong</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/fin_lime_dark</item>
+        <item name="colorAccent">@color/fin_lime_strong</item>
 
         <item name="android:textColorPrimary">@color/fin_text_primary</item>
         <item name="android:textColorSecondary">@color/fin_text_secondary</item>
@@ -21,13 +23,12 @@
 
     <!-- Buttons -->
     <style name="Widget.FinPilot.Button.Primary" parent="Widget.Material3.Button">
-        <item name="backgroundTint">@color/fin_accent_blue</item>
-        <item name="android:textColor">@color/fin_on_accent</item>
+        <item name="backgroundTint">@color/fin_lime</item>
+        <item name="android:textColor">@color/fin_on_lime</item>
         <item name="cornerRadius">16dp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:letterSpacing">0.01</item>
         <item name="android:paddingTop">15dp</item>
         <item name="android:paddingBottom">15dp</item>
         <item name="android:minHeight">54dp</item>
@@ -40,11 +41,20 @@
         <item name="cornerRadius">16dp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:letterSpacing">0.01</item>
         <item name="android:paddingTop">15dp</item>
         <item name="android:paddingBottom">15dp</item>
         <item name="android:minHeight">54dp</item>
-        <item name="rippleColor">#2260A5FA</item>
+        <item name="rippleColor">@color/fin_lime_soft</item>
+    </style>
+
+    <!-- Floating Add Asset action -->
+    <style name="Widget.FinPilot.Fab" parent="Widget.Material3.ExtendedFloatingActionButton.Primary">
+        <item name="backgroundTint">@color/fin_lime</item>
+        <item name="android:textColor">@color/fin_on_lime</item>
+        <item name="iconTint">@color/fin_on_lime</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
 </resources>

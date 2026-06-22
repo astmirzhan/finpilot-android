@@ -1,230 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/analysisRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipToPadding="false"
-    android:fillViewport="true">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="48dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:letterSpacing="0.18"
-            android:text="ANALYSIS"
-            android:textColor="@color/fin_accent_blue"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="Portfolio Analysis"
-            android:textColor="@color/fin_text_primary"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/analysisProfileText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:background="@drawable/bg_chip"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp"
-            android:text="Profile: Balanced"
-            android:textColor="@color/fin_text_primary"
-            android:textSize="14sp" />
-
-        <!-- Scores card -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/bg_card_elevated"
             android:orientation="vertical"
-            android:padding="22dp">
+            android:paddingStart="20dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="28dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total value"
-                android:textColor="@color/fin_text_secondary"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/analysisTotalValueText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="Total value: $0.00"
-                android:textColor="@color/fin_text_primary"
-                android:textSize="28sp"
+                android:layout_marginTop="8dp"
+                android:letterSpacing="0.16"
+                android:text="ASSISTANT INSIGHT"
+                android:textColor="@color/fin_lime_dark"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/analysisRiskScoreText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:text="Risk score: 0.0/10"
-                android:textColor="@color/fin_text_secondary"
-                android:textSize="15sp" />
-
-            <ProgressBar
-                android:id="@+id/analysisRiskProgress"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="6dp"
-                android:layout_marginTop="8dp"
-                android:max="100"
-                android:progress="0"
-                android:progressBackgroundTint="@color/fin_border"
-                android:progressTint="@color/fin_accent_amber" />
+                android:layout_marginTop="4dp"
+                android:text="FinPilot AI Brief"
+                android:textColor="@color/fin_text_primary"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/analysisDiversificationText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="Diversification: 0.0/10"
-                android:textColor="@color/fin_text_secondary"
-                android:textSize="15sp" />
-
-            <ProgressBar
-                android:id="@+id/analysisDiversificationProgress"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="6dp"
-                android:layout_marginTop="8dp"
-                android:max="100"
-                android:progress="0"
-                android:progressBackgroundTint="@color/fin_border"
-                android:progressTint="@color/fin_accent_green" />
-        </LinearLayout>
-
-        <!-- Chart card -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:background="@drawable/bg_card_glass"
-            android:orientation="vertical"
-            android:padding="20dp">
-
-            <TextView
+                android:id="@+id/analysisProfileText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Allocation by category"
-                android:textColor="@color/fin_text_primary"
-                android:textSize="18sp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_chip_lime"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:text="Profile: Balanced"
+                android:textColor="@color/fin_lime_dark"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <com.astmirzhan.finpilot.view.PortfolioChartView
-                android:id="@+id/portfolioChartView"
+            <!-- Score card -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="260dp"
-                android:layout_marginTop="12dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="22dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total value"
+                    android:textColor="@color/fin_text_secondary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/analysisTotalValueText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Total value: $0.00"
+                    android:textColor="@color/fin_text_primary"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/analysisRiskScoreText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:text="Risk score: 0.0/10"
+                    android:textColor="@color/fin_text_secondary"
+                    android:textSize="15sp" />
+
+                <ProgressBar
+                    android:id="@+id/analysisRiskProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:layout_marginTop="8dp"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressBackgroundTint="@color/fin_border"
+                    android:progressTint="@color/fin_warning" />
+
+                <TextView
+                    android:id="@+id/analysisDiversificationText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="Diversification: 0.0/10"
+                    android:textColor="@color/fin_text_secondary"
+                    android:textSize="15sp" />
+
+                <ProgressBar
+                    android:id="@+id/analysisDiversificationProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:layout_marginTop="8dp"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressBackgroundTint="@color/fin_border"
+                    android:progressTint="@color/fin_lime_strong" />
+            </LinearLayout>
+
+            <!-- Chart card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Allocation by category"
+                    android:textColor="@color/fin_text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.astmirzhan.finpilot.view.PortfolioChartView
+                    android:id="@+id/portfolioChartView"
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp"
+                    android:layout_marginTop="12dp" />
+            </LinearLayout>
+
+            <!-- AI brief card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_card_soft"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Assistant analysis"
+                    android:textColor="@color/fin_lime_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/aiBriefContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+            <!-- Sensor insights card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sensor insights"
+                    android:textColor="@color/fin_text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/sensorModeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Sensor mode: waiting..."
+                    android:textColor="@color/fin_text_primary"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/accelerometerStatusText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Accelerometer: ready"
+                    android:textColor="@color/fin_text_secondary"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/lightStatusText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Light: reading..."
+                    android:textColor="@color/fin_text_secondary"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/manualSensorDemoButton"
+                    style="@style/Widget.FinPilot.Button.Secondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Manual sensor demo" />
+            </LinearLayout>
+
+            <!-- Recommendations card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quick recommendations"
+                    android:textColor="@color/fin_text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/recommendationsText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:lineSpacingExtra="4dp"
+                    android:text="No recommendations yet."
+                    android:textColor="@color/fin_text_secondary"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
         </LinearLayout>
+    </ScrollView>
 
-        <!-- Sensor insights card -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:background="@drawable/bg_card_glass"
-            android:orientation="vertical"
-            android:padding="20dp">
+    <include layout="@layout/view_bottom_nav" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sensor insights"
-                android:textColor="@color/fin_text_primary"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/sensorModeText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="Sensor mode: waiting..."
-                android:textColor="@color/fin_text_primary"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/accelerometerStatusText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Accelerometer: ready"
-                android:textColor="@color/fin_text_secondary"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/lightStatusText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Light: reading..."
-                android:textColor="@color/fin_text_secondary"
-                android:textSize="15sp" />
-
-            <Button
-                android:id="@+id/manualSensorDemoButton"
-                style="@style/Widget.FinPilot.Button.Secondary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Manual sensor demo" />
-        </LinearLayout>
-
-        <!-- Recommendations card -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:background="@drawable/bg_card_glass"
-            android:orientation="vertical"
-            android:padding="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Recommendations"
-                android:textColor="@color/fin_text_primary"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/recommendationsText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:lineSpacingExtra="4dp"
-                android:text="No recommendations yet."
-                android:textColor="@color/fin_text_secondary"
-                android:textSize="15sp" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/backFromAnalysisButton"
-            style="@style/Widget.FinPilot.Button.Secondary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Back" />
-
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

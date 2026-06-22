@@ -3,65 +3,69 @@
     android:id="@+id/portfolioRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
-    <!-- Summary card -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bg_card_elevated"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical"
-        android:padding="22dp">
+        android:paddingStart="20dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="20dp">
 
-        <TextView
-            android:id="@+id/portfolioTitleText"
+        <!-- Summary card -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Portfolio"
-            android:textColor="@color/fin_text_primary"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="22dp">
+
+            <TextView
+                android:id="@+id/portfolioTitleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Portfolio"
+                android:textColor="@color/fin_text_primary"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/portfolioSummaryText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="0 assets • $0.00"
+                android:textColor="@color/fin_text_secondary"
+                android:textSize="15sp" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/portfolioSummaryText"
+            android:id="@+id/emptyPortfolioText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="0 assets • $0.00"
-            android:textColor="@color/fin_text_secondary"
-            android:textSize="15sp" />
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_card_soft"
+            android:gravity="center"
+            android:padding="28dp"
+            android:text="No assets yet.\nTap Add Asset to create your first position."
+            android:textColor="@color/fin_lime_dark"
+            android:textSize="15sp"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/assetsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="18dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingBottom="12dp" />
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/emptyPortfolioText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/bg_card_glass"
-        android:gravity="center"
-        android:padding="28dp"
-        android:text="No assets yet.\nAdd your first asset from the dashboard."
-        android:textColor="@color/fin_text_secondary"
-        android:textSize="15sp"
-        android:visibility="gone" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/assetsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="18dp"
-        android:layout_weight="1"
-        android:clipToPadding="false"
-        android:paddingBottom="8dp" />
-
-    <Button
-        android:id="@+id/backButton"
-        style="@style/Widget.FinPilot.Button.Secondary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Back" />
+    <include layout="@layout/view_bottom_nav" />
 
 </LinearLayout>
